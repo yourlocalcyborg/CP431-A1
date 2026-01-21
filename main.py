@@ -3,6 +3,7 @@
 import mpi4py as m
 import timeit as t
 from math import sqrt, floor
+from sys import argv
 
 def sieve(n):
     A = [True for i in range(2, n+1)]
@@ -32,4 +33,4 @@ def main(n):
     return findgaps(results)
 
 
-print(t.timeit(stmt=lambda: print(main(1000000000000)), number=1))
+print(t.timeit(stmt=lambda: print(main(int(argv[1]))), number=1))
