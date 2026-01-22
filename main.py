@@ -1,22 +1,34 @@
 #!/usr/bin/env python3
 
-import mpi4py as m
+from mpi4py import MPI
 import timeit as t
 from math import sqrt, floor
 from sys import argv
 
+def sieve_once(i, n):
+    j = i**2
+    composites = []
+    while j <= n:
+        composites.append(j)
+        j += i
+
+    return composites
+
 def sieve(n):
     A = [True for i in range(2, n+1)]
+
     for i in range(2, floor(sqrt(n))):
         if A[i-2]:
-            j = i**2
-            while j <= n:
-                A[j-2] = False 
-                j += i
-    
+            composites = sieve_once(i, n)
+            for i in composites:
+                A[i-2] = False
+
+    primes = []
     for i in range(len(A)):
         if A[i]:
-            yield i+2
+            primes.append(i+2)
+
+    return primes
     
 def findgaps(primes):
     gap = (0, 0, 0)
@@ -27,10 +39,10 @@ def findgaps(primes):
 
     return gap
 
-def main(n):
-    gen = sieve(n)
-    results = list(gen)
-    return findgaps(results)
 
+com = MPI.COMM_WORLD
+rank = com.Get_rank()
 
-print(t.timeit(stmt=lambda: print(main(int(argv[1]))), number=1))
+results = sieve(int(argv[1]))
+print(results)
+print(findgaps(results))
