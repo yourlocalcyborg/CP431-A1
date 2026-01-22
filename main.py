@@ -44,5 +44,5 @@ com = MPI.COMM_WORLD
 rank = com.Get_rank()
 
 results = sieve(int(argv[1]))
-print(results)
+#print(results)
 print(findgaps(results))
