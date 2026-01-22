@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from mpi4py import MPI
 from math import sqrt, floor
 from sys import argv
 
@@ -38,10 +37,7 @@ def findgaps(primes):
 
     return gap
 
-
-com = MPI.COMM_WORLD
-rank = com.Get_rank()
+#TODO: write segmented sieve for scaling to 1 trillion
 
 results = sieve(int(argv[1]))
-#print(results)
 print(findgaps(results))
