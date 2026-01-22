@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from mpi4py import MPI
-import timeit as t
 from math import sqrt, floor
 from sys import argv
 
