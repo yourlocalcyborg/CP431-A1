@@ -28,7 +28,7 @@ def sieve(n):
             for i in composites:
                 A[i-2] = False
 
-    # Turn boolean list into list of which elements are True (prime)
+    # Turn list of bools into list of True (prime) element indices
     primes = []
     for i in range(len(A)):
         if A[i]:
