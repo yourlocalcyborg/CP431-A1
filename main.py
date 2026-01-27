@@ -2,6 +2,7 @@
 
 from math import sqrt, floor
 from sys import argv
+from array import array
 
 # Single sieve (find all composites up to range for single starting prime)
 def sieve_once(i, n):
@@ -17,8 +18,8 @@ def sieve(n):
     # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
     # Same algorithm as shown in pseudocode here, 
 
-    # Initialize boolean list to True for all elements in range
-    A = [True for i in range(2, n+1)]
+    # Initialize boolean array to True for all elements in range
+    A = array('B', [1 for i in range(2, n+1)])
 
     # Prime sieve
     for i in range(2, floor(sqrt(n))):
