@@ -19,7 +19,7 @@ def sieve(n):
     # Same algorithm as shown in pseudocode here, 
 
     # Initialize boolean array to True for all elements in range
-    A = array('B', [1 for i in range(2, n+1)])
+    A = array('B', [True for i in range(2, n+1)])
 
     # Prime sieve
     for i in range(2, floor(sqrt(n))):
