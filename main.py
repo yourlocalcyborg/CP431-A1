@@ -112,3 +112,6 @@ def main():
         print(f"Between Primes: {final_p1} and {final_p2}")
         print(f"Time Elapsed: {end_time - start_time:.4f} seconds")
         print("-" * 30)
+
+if __name__ == "__main__":
+    main()
